@@ -1,7 +1,11 @@
 const express = require('express');
 const { register } = require('./controllers'); // Asumiendo que el archivo de registro está en controllers.js
 const { login } = require('./controllers');
+const cors = require('cors');
 const app = express();
+
+// CORS
+app.use(cors());
 
 // Middleware para parsear el cuerpo de las solicitudes como JSON
 app.use(express.json()); 
