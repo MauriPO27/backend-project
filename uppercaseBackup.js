@@ -5,9 +5,9 @@ const cors = require('cors');
 // CORS
 app.use(cors());
 
-app.use(express.json()); // Middleware para parsear JSON
+app.use(express.json());
 
-// Ruta principal para convertir una string a mayúsculas
+
 app.post('/uppercase', (req, res) => {
     const { inputString } = req.body;
 
@@ -16,7 +16,7 @@ app.post('/uppercase', (req, res) => {
         return res.status(400).json({ message: 'No input string provided' });
     }
 
-    // Convertir la cadena a mayúsculas
+    // Convertir la cadena a mayúsculas e invertir
     const uppercasedString = inputString.toUpperCase();
     const reversedString = uppercasedString.split('').reverse().join('');
 
@@ -28,8 +28,8 @@ app.post('/uppercase', (req, res) => {
     });
 });
 
-// Iniciar el servidor en un puerto diferente
-const PORT = process.env.PORT || 5003;  // Este servicio de respaldo se ejecuta en otro puerto
+// Iniciar el servidor en el puerto 5003
+const PORT = process.env.PORT || 5003;
 app.listen(PORT, () => {
     console.log(`Backup service running on port ${PORT}`);
 });

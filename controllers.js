@@ -5,9 +5,9 @@ const jwt = require('jsonwebtoken');
 // Crear la conexión a la base de datos MySQL
 const pool = mysql.createPool({
     host: 'localhost',
-    user: 'root',      // Usuario de la base de datos
-    password: '223142', // Contraseña de la base de datos
-    database: 'myapp',  // Nombre de la base de datos
+    user: 'root',     
+    password: '223142', 
+    database: 'myapp',  
     port: 3306         
 });
 
@@ -33,7 +33,7 @@ const register = async (req, res) => {
         return res.status(400).json({ message: 'User already exists' });
       }
   
-      // Hashear la contraseña antes de guardarla
+     
       const hashedPassword = await bcrypt.hash(password, 10);
   
       // Insertar el nuevo usuario en la base de datos
@@ -70,9 +70,9 @@ const login = async (req, res) => {
 
         // Crear un JWT (JSON Web Token) y devolverlo al usuario
         const token = jwt.sign(
-            { userId: user.id, username: user.username, email: user.email }, // Payload
-            'supersecretkey', // Llave secreta, puedes usar un .env para configurarlo
-            { expiresIn: '1h' } // Expiración del token (1 hora)
+            { userId: user.id, username: user.username, email: user.email }, 
+            'supersecretkey', 
+            { expiresIn: '1h' } 
         );
 
         return res.status(200).json({ message: 'Login successful', token });

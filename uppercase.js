@@ -15,7 +15,6 @@ app.post('/uppercase', async (req, res) => {
     if (!inputString) {
         return res.status(400).json({ message: 'No input string provided' });
     }
-
     // Verificamos la longitud del texto
     if (inputString.length > 20) {
         // Si la longitud del texto es mayor a 20, redirigimos la solicitud al servicio de respaldo
@@ -29,7 +28,6 @@ app.post('/uppercase', async (req, res) => {
             return res.status(500).json({ message: 'Ambos servicios fallaron. Intenta más tarde.' });
         }
     }
-
     try {
         // Intentamos convertir la cadena a mayúsculas
         const uppercasedString = inputString.toUpperCase();
